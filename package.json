@@ -1,0 +1,59 @@
+{
+  "name": "@cookwith/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for Cookwith - AI-powered recipe generation and transformation tools",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "ai",
+    "cooking",
+    "recipes",
+    "cookwith",
+    "llm",
+    "gpt"
+  ],
+  "author": "Cookwith Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blaideinc/cookwith-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/blaideinc/cookwith-mcp/issues"
+  },
+  "homepage": "https://cookwith.co",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "mcp": {
+    "name": "cookwith-mcp",
+    "description": "AI-powered recipe generation and transformation tools",
+    "version": "1.0.0",
+    "transport": "stdio",
+    "tools": [
+      {
+        "name": "generate_recipe",
+        "description": "Generate a new recipe based on natural language instructions"
+      },
+      {
+        "name": "transform_recipe",
+        "description": "Transform or modify an existing recipe"
+      }
+    ]
+  }
+}

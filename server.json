@@ -1,0 +1,139 @@
+{
+  "name": "io.github.jkakar/cookwith-mcp",
+  "description": "AI-powered recipe generation and transformation tools by Cookwith",
+  "author": "Cookwith Team",
+  "homepage": "https://cookwith.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blaideinc/cookwith-mcp"
+  },
+  "license": "MIT",
+  "categories": ["cooking", "recipes", "ai", "food", "nutrition"],
+  "runtime": "node",
+  "minRuntimeVersion": "18.0.0",
+  "package": {
+    "type": "npm",
+    "name": "@cookwith/mcp-server",
+    "version": "1.0.0"
+  },
+  "tools": [
+    {
+      "name": "generate_recipe",
+      "description": "Generate a new recipe based on natural language instructions and dietary preferences",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Natural language description of the desired recipe"
+          },
+          "dietaryRestrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Dietary restrictions (e.g., vegetarian, vegan, gluten-free)"
+          },
+          "allergies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ingredients to avoid due to allergies"
+          },
+          "dislikes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Foods to avoid"
+          },
+          "calories": {
+            "type": "string",
+            "description": "Target calories per serving"
+          },
+          "protein": {
+            "type": "string",
+            "description": "Target protein in grams per serving"
+          },
+          "servings": {
+            "type": "number",
+            "description": "Number of servings (1-20, default: 4)",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 4
+          }
+        },
+        "required": ["prompt"]
+      }
+    },
+    {
+      "name": "transform_recipe",
+      "description": "Transform or modify an existing recipe based on natural language instructions",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "recipe": {
+            "type": "object",
+            "description": "The recipe to transform",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "ingredients": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "instructions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "servings": {
+                "type": "number"
+              }
+            },
+            "required": ["title", "description", "ingredients", "instructions", "servings"]
+          },
+          "instructions": {
+            "type": "string",
+            "description": "Instructions for how to transform the recipe"
+          },
+          "calories": {
+            "type": "string",
+            "description": "New target calories per serving"
+          },
+          "protein": {
+            "type": "string",
+            "description": "New target protein in grams per serving"
+          },
+          "servings": {
+            "type": "number",
+            "description": "New number of servings",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": ["recipe", "instructions"]
+      }
+    }
+  ],
+  "keywords": [
+    "recipe",
+    "cooking",
+    "ai",
+    "gpt",
+    "food",
+    "nutrition",
+    "dietary",
+    "meal-planning",
+    "chef",
+    "cuisine"
+  ]
+}
