@@ -1,21 +1,30 @@
 {
-  "name": "io.github.jkakar/cookwith-mcp",
+  "name": "cookwith-mcp",
   "description": "AI-powered recipe generation and transformation tools by Cookwith",
+  "version": "1.0.0",
   "author": "Cookwith Team",
+  "license": "MIT",
   "homepage": "https://cookwith.co",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/blaideinc/cookwith-mcp"
+    "url": "https://github.com/blaideinc/cookwith-mcp",
+    "source": "github"
   },
-  "license": "MIT",
+  "bugs": "https://github.com/blaideinc/cookwith-mcp/issues",
   "categories": ["cooking", "recipes", "ai", "food", "nutrition"],
+  "keywords": [
+    "recipe",
+    "cooking",
+    "ai",
+    "gpt",
+    "food",
+    "nutrition",
+    "dietary",
+    "meal-planning"
+  ],
   "runtime": "node",
   "minRuntimeVersion": "18.0.0",
-  "package": {
-    "type": "npm",
-    "name": "@cookwith/mcp-server",
-    "version": "1.0.0"
-  },
+  "transport": ["stdio", "http"],
+  "httpEndpoint": "https://cookwith.co/api/mcp",
   "tools": [
     {
       "name": "generate_recipe",
@@ -29,23 +38,17 @@
           },
           "dietaryRestrictions": {
             "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "items": { "type": "string" },
             "description": "Dietary restrictions (e.g., vegetarian, vegan, gluten-free)"
           },
           "allergies": {
             "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "items": { "type": "string" },
             "description": "Ingredients to avoid due to allergies"
           },
           "dislikes": {
             "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "items": { "type": "string" },
             "description": "Foods to avoid"
           },
           "calories": {
@@ -58,7 +61,7 @@
           },
           "servings": {
             "type": "number",
-            "description": "Number of servings (1-20, default: 4)",
+            "description": "Number of servings (1-20)",
             "minimum": 1,
             "maximum": 20,
             "default": 4
@@ -77,29 +80,25 @@
             "type": "object",
             "description": "The recipe to transform",
             "properties": {
-              "title": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
+              "title": { "type": "string" },
+              "description": { "type": "string" },
               "ingredients": {
                 "type": "array",
-                "items": {
-                  "type": "string"
-                }
+                "items": { "type": "string" }
               },
               "instructions": {
                 "type": "array",
-                "items": {
-                  "type": "string"
-                }
+                "items": { "type": "string" }
               },
-              "servings": {
-                "type": "number"
-              }
+              "servings": { "type": "number" }
             },
-            "required": ["title", "description", "ingredients", "instructions", "servings"]
+            "required": [
+              "title",
+              "description",
+              "ingredients",
+              "instructions",
+              "servings"
+            ]
           },
           "instructions": {
             "type": "string",
@@ -124,16 +123,18 @@
       }
     }
   ],
-  "keywords": [
-    "recipe",
-    "cooking",
-    "ai",
-    "gpt",
-    "food",
-    "nutrition",
-    "dietary",
-    "meal-planning",
-    "chef",
-    "cuisine"
-  ]
+  "installation": {
+    "npm": {
+      "package": "@cookwith/mcp-server"
+    },
+    "docker": {
+      "image": "cookwith/mcp-server:latest"
+    }
+  },
+  "configuration": {
+    "claudeDesktop": {
+      "command": "npx",
+      "args": ["@cookwith/mcp-server"]
+    }
+  }
 }
